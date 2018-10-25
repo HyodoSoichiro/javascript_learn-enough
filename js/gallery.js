@@ -7,10 +7,14 @@ function activateGallery() {
 
 
   thumbnails.forEach(function(el) {
+  	let largeVersion = new Image();
+  	largeVersion.src = el.dataset.largeVersion;
+
   	// set the Image
   	el.addEventListener("click", function() {
-  		let newImgUrl = el.dataset.largeVersion;
-  		mainImg.setAttribute("src", newImgUrl);
+  		// Preload large images.
+	    mainImg.setAttribute("src", largeVersion.src);
+
   		let currentClass = "current";
 
   		//move .current
